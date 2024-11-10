@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+package lsm;
+option go_package = "github.com/rkmngkr/lsm/lsm";
+
+service Database {
+  rpc Get(GetRequest) returns (GetResponse);
+  rpc Set(SetRequest) returns (SetResponse);
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+  rpc ListPush(ListPushRequest) returns (ListPushResponse);
+  rpc ListPop(ListPopRequest) returns (ListPopResponse);
+  rpc SetAdd(SetAddRequest) returns (SetAddResponse);
+  rpc SetRemove(SetRemoveRequest) returns (SetRemoveResponse);
+  rpc SortedSetAdd(SortedSetAddRequest) returns (SortedSetAddResponse);
+  rpc SortedSetRemove(SortedSetRemoveRequest) returns (SortedSetRemoveResponse);
+  rpc HashSet(HashSetRequest) returns (HashSetResponse);
+  rpc HashGet(HashGetRequest) returns (HashGetResponse);
+}
+
+message SetRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message SetResponse {
+  bool success = 1;
+}
+
+message GetRequest {
+  string key = 1;
+}
+
+message GetResponse {
+  string value = 1;
+}
+
+message DeleteRequest {
+  string key = 1;
+}
+
+message DeleteResponse {
+  bool success = 1;
+}
+
+message ListPushRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message ListPushResponse {
+  bool success = 1;
+}
+
+message ListPopRequest {
+  string key = 1;
+}
+
+message ListPopResponse {
+  string value = 1;
+  bool success = 2;
+}
+
+message SetAddRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message SetAddResponse {
+  bool success = 1;
+}
+
+message SetRemoveRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message SetRemoveResponse {
+  bool success = 1;
+}
+
+message SortedSetAddRequest {
+  string key = 1;
+  string value = 2;
+  int32 score = 3;
+}
+
+message SortedSetAddResponse {
+  bool success = 1;
+}
+
+message SortedSetRemoveRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message SortedSetRemoveResponse {
+  bool success = 1;
+}
+
+message HashSetRequest {
+  string key = 1;
+  string field = 2;
+  string value = 3;
+}
+
+message HashSetResponse {
+  bool success = 1;
+}
+
+message HashGetRequest {
+  string key = 1;
+  string field = 2;
+}
+
+message HashGetResponse {
+  string value = 1;
+}
